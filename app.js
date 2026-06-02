@@ -137,11 +137,11 @@ const defaultIngredients = [
 function loadIngredients() {
   try {
     const saved = localStorage.getItem(storageKeys.ingredients);
-    if (!saved) return [...defaultIngredients];
+    if (!saved) return [];
     const parsed = JSON.parse(saved);
-    return Array.isArray(parsed) ? parsed : [...defaultIngredients];
+    return Array.isArray(parsed) ? parsed : [];
   } catch {
-    return [...defaultIngredients];
+    return [];
   }
 }
 
@@ -190,8 +190,8 @@ function cloneMeals(meals) {
 function createMealPlan() {
   return {
     date: getDateKey(),
-    today: cloneMeals(defaultMealPlan.today),
-    tomorrow: cloneMeals(defaultMealPlan.tomorrow),
+    today: cloneMeals(emptyMeals),
+    tomorrow: cloneMeals(emptyMeals),
   };
 }
 
