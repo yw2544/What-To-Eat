@@ -73,7 +73,7 @@ button {
   align-items: center;
   justify-content: space-between;
   flex: 0 0 auto;
-  padding: 18px 20px 10px;
+  padding: 18px 30px 10px;
 }
 
 .eyebrow {
@@ -113,7 +113,7 @@ h2 {
 
 .pantry-panel {
   flex: 0 0 auto;
-  padding: 0 20px 8px;
+  padding: 0 30px 8px;
 }
 
 .section-heading,
@@ -222,7 +222,7 @@ h2 {
 .meal-panel {
   flex: 1 1 auto;
   min-height: 230px;
-  margin: 2px 20px 18px;
+  margin: 2px 30px 18px;
   padding: 14px;
   border-radius: 26px;
   background: var(--card);
