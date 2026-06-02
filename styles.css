@@ -44,6 +44,7 @@ input {
 button {
   border: 0;
   cursor: pointer;
+  color: inherit;
 }
 
 .phone-shell {
