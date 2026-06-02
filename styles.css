@@ -58,12 +58,12 @@ button {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: min(100%, 430px);
-  height: min(900px, calc(100vh - 44px));
+  width: min(100%, 393px);
+  height: min(852px, calc(100vh - 44px));
   min-height: 720px;
   overflow: hidden;
   border: 1px solid rgba(236, 232, 223, 0.9);
-  border-radius: 34px;
+  border-radius: 54px;
   background: rgba(255, 253, 248, 0.92);
   box-shadow: var(--shadow);
 }
