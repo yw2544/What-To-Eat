@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fffdf8" />
+    <title>今天吃什么</title>
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
+    <link rel="stylesheet" href="styles.css?v=10" />
+  </head>
+  <body>
+    <main class="phone-shell">
+      <section class="app-screen">
+        <header class="top-bar">
+          <div>
+            <p class="eyebrow">What To Eat</p>
+            <h1>今天吃什么</h1>
+          </div>
+          <button id="addIngredientButton" class="round-action" type="button" aria-label="添加食材">+</button>
+        </header>
+
+        <section class="pantry-panel" aria-labelledby="pantry-title">
+          <div class="section-heading">
+            <h2 id="pantry-title">我的食材仓库</h2>
+            <span>按类别浏览</span>
+          </div>
+          <div id="pantryRows" class="pantry-rows"></div>
+        </section>
+
+        <section class="meal-panel" aria-labelledby="meal-title">
+          <div class="meal-header">
+            <h2 id="meal-title">食谱计划</h2>
+            <div class="day-toggle" role="tablist" aria-label="食谱日期">
+              <button class="active" type="button" data-day="today">今日</button>
+              <button type="button" data-day="tomorrow">明日</button>
+            </div>
+          </div>
+          <div id="mealList" class="meal-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <div id="ingredientModal" class="modal-backdrop" hidden>
+      <section class="ingredient-sheet" role="dialog" aria-modal="true" aria-labelledby="ingredientTitle">
+        <button id="modalClose" class="sheet-close" type="button" aria-label="关闭">×</button>
+        <div id="modalIcon" class="detail-icon"></div>
+        <h2 id="ingredientTitle"></h2>
+        <dl>
+          <div>
+            <dt>类别</dt>
+            <dd id="ingredientCategory"></dd>
+          </div>
+          <div>
+            <dt>过期时间</dt>
+            <dd id="ingredientExpiry"></dd>
+          </div>
+          <div>
+            <dt>备注</dt>
+            <dd id="ingredientNote"></dd>
+          </div>
+        </dl>
+        <div class="sheet-actions">
+          <button id="editIngredientButton" class="secondary" type="button">编辑</button>
+          <button id="useUpButton" class="danger" type="button">用完了</button>
+        </div>
+      </section>
+    </div>
+
+    <div id="addModal" class="modal-backdrop" hidden>
+      <section class="add-sheet" role="dialog" aria-modal="true" aria-labelledby="addTitle">
+        <button id="addClose" class="sheet-close" type="button" aria-label="关闭">×</button>
+        <div class="add-sheet-header">
+          <div id="selectedIconPreview" class="detail-icon"></div>
+          <div>
+            <p id="ingredientFormEyebrow" class="eyebrow">New Ingredient</p>
+            <h2 id="addTitle">添加食材</h2>
+          </div>
+        </div>
+
+        <form id="addForm" class="add-form">
+          <label>
+            <span>食材名称</span>
+            <input id="ingredientNameInput" type="text" placeholder="例如：莲藕" autocomplete="off" required />
+          </label>
+          <div class="category-picker">
+            <span>类别</span>
+            <div id="ingredientCategoryInput" class="category-options"></div>
+          </div>
+          <div class="expiry-picker">
+            <div class="expiry-picker-top">
+              <strong>过期时间</strong>
+              <span id="expiryPreview">未设置</span>
+            </div>
+            <div id="expiryQuickButtons" class="expiry-quick-buttons"></div>
+            <div class="wheel-picker" aria-label="过期时间选择">
+              <div id="monthWheel" class="wheel-column" aria-label="月份"></div>
+              <div id="dayWheel" class="wheel-column" aria-label="日期"></div>
+            </div>
+          </div>
+          <label>
+            <span>备注</span>
+            <input id="ingredientNoteInput" type="text" placeholder="可选" />
+          </label>
+
+          <div class="icon-picker">
+            <div class="icon-picker-top">
+              <strong>选择图标</strong>
+              <span id="iconCount"></span>
+            </div>
+            <input id="iconSearchInput" class="icon-search" type="text" placeholder="搜索：番茄 / tomato / 蔬果" />
+            <div id="iconTabs" class="icon-tabs"></div>
+            <div id="iconGrid" class="icon-grid" aria-label="OpenMoji 图标选择"></div>
+          </div>
+
+          <button id="ingredientSaveButton" class="save-button" type="submit">添加到仓库</button>
+        </form>
+      </section>
+    </div>
+
+    <div id="mealModal" class="modal-backdrop" hidden>
+      <section class="meal-sheet" role="dialog" aria-modal="true" aria-labelledby="mealEditTitle">
+        <button id="mealClose" class="sheet-close" type="button" aria-label="关闭">×</button>
+        <p class="eyebrow">Meal Plan</p>
+        <h2 id="mealEditTitle">编辑食谱</h2>
+        <form id="mealForm" class="meal-form">
+          <label>
+            <span id="mealInputLabel">菜名</span>
+            <input id="mealDishInput" type="text" placeholder="例如：番茄鸡蛋面" autocomplete="off" />
+          </label>
+          <div class="sheet-actions">
+            <button id="mealClear" class="secondary" type="button">清空</button>
+            <button class="save-button" type="submit">保存</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <script src="app.js?v=10"></script>
+  </body>
+</html>
